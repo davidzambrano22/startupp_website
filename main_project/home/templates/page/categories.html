@@ -1,0 +1,25 @@
+<ul class="nav flex-column">
+    {% for item in categories_with_subcategories %}
+    <li class="nav-item">
+        <!-- Category link with dropdown indicator -->
+        <a class="nav-link d-flex justify-content-between align-items-center" href="{% url 'category_detail' item.category.slug %}" data-bs-toggle="collapse" data-bs-target="#collapse-{{ item.category.id }}" aria-expanded="false" aria-controls="collapse-{{ item.category.id }}">
+            {{ item.category.name }}
+            <!-- Arrow indicating dropdown -->
+            <span class="dropdown-toggle"></span>
+        </a>
+
+        <!-- Collapsible section for subcategories -->
+        {% if item.subcategories %}
+        <div class="collapse" id="collapse-{{ item.category.id }}">
+            <ul class="nav flex-column ms-3">
+                {% for subcategory in item.subcategories %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ subcategory.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

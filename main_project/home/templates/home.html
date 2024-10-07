@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the home page!</p>
+
+    <h2>Categories</h2>
+    
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <!-- Category image -->
+                    <img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.name }}">
+                    
+                    <div class="card-body">
+                        <!-- Category name -->
+                        <h5 class="card-title">{{ category.name }}</h5>
+
+                        <!-- Category description -->
+                        <p class="card-text">{{ category.description|truncatewords:20 }}</p>
+
+                        <!-- Link to category detail page -->
+                        <a href="{% url 'category_detail' category.slug %}" class="btn btn-primary">Explore {{ category.name }}</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start a new row after every two categories -->
+            {% if forloop.counter|divisibleby:2 and not forloop.last %}
+            </div><div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

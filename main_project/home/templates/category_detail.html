@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+    <ul>
+        {% for subcategory in subcategories %}
+            <li>
+                 {{ subcategory.name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
