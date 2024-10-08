@@ -28,9 +28,13 @@
    
    
     <!-- Header Section -->
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Z33</a>
+        
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/z33_logo_transparent.png' %}" alt="Z33 Logo" style="height: 40px; width: auto;"> <!-- Adjust height as needed -->
+                Z33
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,12 +45,11 @@
     <div class="container-fluid">
         <div class="row">
             <!-- sidebar section -->
-            <div class="col-md-3 bg-light sidebar position-sticky">
-                <h4>Categorías</h4>
+            <div class="col-md-2 bg-dark sidebar position-sticky">
                     {% all_categories %}
             </div>
             <!-- main section -->
-            <div class="col-md-9 content">
+            <div class="col-md-10 content">
                 {% block content %}
                 {% endblock %}
             </div>

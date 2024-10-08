@@ -1,19 +1,23 @@
 .sidebar {
-    margin-top: 20px;
-    padding: 0;
+    margin-top: 0px;
+    padding: 10px;
     list-style: none;
   }
 
-  .sidebar li .submenu{ 
-    list-style: none; 
-    margin: 0; 
-    padding: 0; 
-    padding-left: 1rem; 
+  .sidebar h4 {
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
+
+
 .nav-link {
-    color: black !important; /* Change link color to black */
+    color: whitesmoke !important; /* Change link color to black */
     font-family: 'Roboto', sans-serif; /* Apply custom font */
     font-weight: 500; /* Slightly bolder text for a professional look */
 }
@@ -21,3 +25,6 @@
 .nav-link:hover {
     color: #555 !important; /* Optional: Add a hover effect */
 }
+
+
+
