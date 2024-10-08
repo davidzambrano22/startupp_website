@@ -1,25 +1,62 @@
-<ul class="nav flex-column">
+<ul class="nav flex-column" id="nav_accordion">
     {% for item in categories_with_subcategories %}
-    <li class="nav-item">
-        <!-- Category link with dropdown indicator -->
-        <a class="nav-link d-flex justify-content-between align-items-center" href="{% url 'category_detail' item.category.slug %}" data-bs-toggle="collapse" data-bs-target="#collapse-{{ item.category.id }}" aria-expanded="false" aria-controls="collapse-{{ item.category.id }}">
-            {{ item.category.name }}
-            <!-- Arrow indicating dropdown -->
-            <span class="dropdown-toggle"></span>
-        </a>
-
-        <!-- Collapsible section for subcategories -->
         {% if item.subcategories %}
-        <div class="collapse" id="collapse-{{ item.category.id }}">
-            <ul class="nav flex-column ms-3">
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="{% url 'category_detail' item.category.slug %}" data-bs-toggle="collapse" data-bs-target=".submenu-{{ forloop.counter }}">{{ item.category.name }}<span class="float-end">&#x25BC;</span></a>
+            <ul class="submenu collapse submenu-{{ forloop.counter }}">
                 {% for subcategory in item.subcategories %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ subcategory.name }}</a>
-                </li>
+                <li><a class="nav-link" href="#">{{ subcategory.name }}</a></li>
                 {% endfor %}
             </ul>
-        </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'category_detail' item.category.slug %}">{{ item.category.name }}</a>
+        </li>
         {% endif %}
-    </li>
     {% endfor %}
 </ul>
+
+
+<!-- <ul class="nav flex-column" id="nav_accordion">
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link name</a>
+    </li>
+    <li class="nav-item has-submenu">
+        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target=".submenu-1">Submenu links <span class="float-end">&#x25BC;</span></a>
+        <ul class="submenu collapse submenu-1">
+            <li><a class="nav-link" href="#">Submenu item 1</a></li>
+            <li><a class="nav-link" href="#">Submenu item 2</a></li>
+            <li><a class="nav-link" href="#">Submenu item 3</a></li>
+        </ul>
+    </li>
+    <li class="nav-item has-submenu">
+        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target=".submenu-2">More menus <span class="float-end">&#x25BC;</span></a>
+        <ul class="submenu collapse submenu-2">
+            <li class="nav-item has-submenu">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target=".submenu-3">Submenu links <span class="float-end">&#x25BC;</span></a>
+                <ul class="submenu collapse submenu-3">
+                    <li><a class="nav-link" href="#">Submenu item 1</a></li>
+                    <li><a class="nav-link" href="#">Submenu item 2</a></li>
+                    <li><a class="nav-link" href="#">Submenu item 3</a></li>
+                </ul>
+            </li>
+            <li><a class="nav-link" href="#">Submenu item 5</a></li>
+            <li><a class="nav-link" href="#">Submenu item 6</a></li>
+            <li><a class="nav-link" href="#">Submenu item 7</a></li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Something</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Other link</a>
+    </li>
+</ul> -->
+
+
+
+
+
+
+
